@@ -205,16 +205,10 @@ public class MigrationsFbTest : MigrationsTestBase<MigrationsFbTest.MigrationsFb
 	public override Task Rename_index() => base.Rename_index();
 
 	[Fact(Skip = SkipReason)]
-	public override Task Add_primary_key() => base.Add_primary_key();
-
-	[Fact(Skip = SkipReason)]
 	public override Task Add_primary_key_with_name() => base.Add_primary_key_with_name();
 
 	[Fact(Skip = SkipReason)]
 	public override Task Add_primary_key_composite_with_name() => base.Add_primary_key_composite_with_name();
-
-	[Fact(Skip = SkipReason)]
-	public override Task Drop_primary_key() => base.Drop_primary_key();
 
 	[Fact(Skip = SkipReason)]
 	public override Task Add_foreign_key() => base.Add_foreign_key();
@@ -300,7 +294,7 @@ public class MigrationsFbTest : MigrationsTestBase<MigrationsFbTest.MigrationsFb
 
 		protected override ITestStoreFactory TestStoreFactory => FbTestStoreFactory.Instance;
 
-		public override TestHelpers TestHelpers => FbTestHelpers.Instance;
+		public override RelationalTestHelpers TestHelpers => FbTestHelpers.Instance;
 
 		protected override IServiceCollection AddServices(IServiceCollection serviceCollection)
 #pragma warning disable EF1001

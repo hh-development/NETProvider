@@ -32,15 +32,9 @@ public class FbUpdateSqlGenerator : UpdateSqlGenerator, IFbUpdateSqlGenerator
 		: base(dependencies)
 	{ }
 
-	protected override void AppendIdentityWhereCondition(StringBuilder commandStringBuilder, IColumnModification columnModification)
-		=> throw new InvalidOperationException();
-
-	protected override void AppendRowsAffectedWhereCondition(StringBuilder commandStringBuilder, int expectedRowsAffected)
-		=> throw new InvalidOperationException();
-
 	public override ResultSetMapping AppendInsertOperation(StringBuilder commandStringBuilder, IReadOnlyModificationCommand command, int commandPosition)
 	{
-		var result = ResultSetMapping.NoResultSet;
+		var result = ResultSetMapping.NoResults;
 		var name = command.TableName;
 		var operations = command.ColumnModifications;
 		var writeOperations = operations.Where(o => o.IsWrite).ToList();

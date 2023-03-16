@@ -24,7 +24,7 @@ using Microsoft.EntityFrameworkCore.TestUtilities;
 
 namespace FirebirdSql.EntityFrameworkCore.Firebird.FunctionalTests;
 
-public class UpdatesFbFixture : UpdatesRelationalFixture
+public class UpdatesFbFixture : UpdatesRelationalTestBase<UpdatesFbFixture>.UpdatesRelationalFixture
 {
 	protected override ITestStoreFactory TestStoreFactory => FbTestStoreFactory.Instance;
 

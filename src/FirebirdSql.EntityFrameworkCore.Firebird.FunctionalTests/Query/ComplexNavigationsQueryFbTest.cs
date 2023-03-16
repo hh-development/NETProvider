@@ -557,23 +557,11 @@ public class ComplexNavigationsQueryFbTest : ComplexNavigationsQueryTestBase<Com
 		return base.GroupJoin_with_complex_subquery_with_joins_does_not_get_flattened3(isAsync);
 	}
 
-	[GeneratedNameTooLongFact]
-	public override void Include18()
-	{
-		base.Include18();
-	}
-
 	[GeneratedNameTooLongTheory]
 	[MemberData(nameof(IsAsyncData))]
 	public override Task Include18_1_1(bool isAsync)
 	{
 		return base.Include18_1_1(isAsync);
-	}
-
-	[GeneratedNameTooLongFact]
-	public override void Include19()
-	{
-		base.Include19();
 	}
 
 	[GeneratedNameTooLongTheory]
@@ -695,12 +683,6 @@ public class ComplexNavigationsQueryFbTest : ComplexNavigationsQueryTestBase<Com
 		return base.Include_reference_with_groupby_in_subquery(async);
 	}
 
-	[GeneratedNameTooLongTheory]
-	[MemberData(nameof(IsAsyncData))]
-	public override Task Project_shadow_properties(bool async)
-	{
-		return base.Project_shadow_properties(async);
-	}
 	[NotSupportedOnFirebirdTheory]
 	[MemberData(nameof(IsAsyncData))]
 	public override Task SelectMany_with_outside_reference_to_joined_table_correctly_translated_to_apply(bool isAsync)

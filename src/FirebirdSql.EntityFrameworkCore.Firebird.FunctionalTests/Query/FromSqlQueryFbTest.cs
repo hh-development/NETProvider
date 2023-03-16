@@ -81,47 +81,47 @@ public class FromSqlQueryFbTest : FromSqlQueryTestBase<NorthwindQueryFbFixture<N
 			: query.Count() > 0;
 	}
 
-	[Theory]
-	[MemberData(nameof(IsAsyncData))]
-	public override async Task FromSql_used_twice_without_parameters(bool async)
-	{
-		using var context = CreateContext();
+	//[Theory]
+	//[MemberData(nameof(IsAsyncData))]
+	//public override async Task FromSql_used_twice_without_parameters(bool async)
+	//{
+	//	using var context = CreateContext();
 
-		var query = context.Set<OrderQuery>()
-			.FromSqlRaw(NormalizeDelimitersInRawString("SELECT 'ALFKI' AS [CustomerID] FROM RDB$DATABASE"))
-			.IgnoreQueryFilters();
+	//	var query = context.Set<OrderQuery>()
+	//		.FromSqlRaw(NormalizeDelimitersInRawString("SELECT 'ALFKI' AS [CustomerID] FROM RDB$DATABASE"))
+	//		.IgnoreQueryFilters();
 
-		var result1 = async
-			? await query.AnyAsync()
-			: query.Any();
+	//	var result1 = async
+	//		? await query.AnyAsync()
+	//		: query.Any();
 
-		Assert.Equal(
-			RelationalStrings.QueryFromSqlInsideExists,
-			async
-				? (await Assert.ThrowsAsync<InvalidOperationException>(() => query.AnyAsync())).Message
-				: Assert.Throws<InvalidOperationException>(() => query.Any()).Message);
-	}
+	//	Assert.Equal(
+	//		RelationalStrings.QueryFromSqlInsideExists,
+	//		async
+	//			? (await Assert.ThrowsAsync<InvalidOperationException>(() => query.AnyAsync())).Message
+	//			: Assert.Throws<InvalidOperationException>(() => query.Any()).Message);
+	//}
 
-	[Theory]
-	[MemberData(nameof(IsAsyncData))]
-	public override async Task FromSql_used_twice_with_parameters(bool async)
-	{
-		using var context = CreateContext();
+	//[Theory]
+	//[MemberData(nameof(IsAsyncData))]
+	//public override async Task FromSql_used_twice_with_parameters(bool async)
+	//{
+	//	using var context = CreateContext();
 
-		var query = context.Set<OrderQuery>()
-			.FromSqlRaw(NormalizeDelimitersInRawString("SELECT CAST({0} AS CHAR(5)) AS [CustomerID] FROM RDB$DATABASE"), "ALFKI")
-			.IgnoreQueryFilters();
+	//	var query = context.Set<OrderQuery>()
+	//		.FromSqlRaw(NormalizeDelimitersInRawString("SELECT CAST({0} AS CHAR(5)) AS [CustomerID] FROM RDB$DATABASE"), "ALFKI")
+	//		.IgnoreQueryFilters();
 
-		var result1 = async
-			? await query.AnyAsync()
-			: query.Any();
+	//	var result1 = async
+	//		? await query.AnyAsync()
+	//		: query.Any();
 
-		Assert.Equal(
-			RelationalStrings.QueryFromSqlInsideExists,
-			async
-				? (await Assert.ThrowsAsync<InvalidOperationException>(() => query.AnyAsync())).Message
-				: Assert.Throws<InvalidOperationException>(() => query.Any()).Message);
-	}
+	//	Assert.Equal(
+	//		RelationalStrings.QueryFromSqlInsideExists,
+	//		async
+	//			? (await Assert.ThrowsAsync<InvalidOperationException>(() => query.AnyAsync())).Message
+	//			: Assert.Throws<InvalidOperationException>(() => query.Any()).Message);
+	//}
 
 	[Theory(Skip = "Provider does the casting.")]
 	[MemberData(nameof(IsAsyncData))]
